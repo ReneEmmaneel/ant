@@ -5,6 +5,10 @@ public class Simulation extends JPanel {
     private double width;
     private double height;
     private Controller controller;
+    public static Color[] COLORS = {new Color(255,255,255), new Color(255,0,0),
+                                    new Color(0,255,0)    , new Color(0,0,255),
+                                    new Color(255,255,0)  , new Color(255,0,255),
+                                    new Color(0,255,255)};
 
     public void paint(Graphics g) {
         g.clearRect(0, 0, getWidth(), getHeight());
@@ -27,14 +31,14 @@ public class Simulation extends JPanel {
     public void fillGraph(Graphics g) {
         for (int x = 0; x < controller.getSquares().length; x++) {
             for (int y = 0; y < controller.getSquares()[x].length; y++) {
-                if (controller.getSquares()[x][y].getState() == 1) {
-                    g.setColor(new Color(0,0,0));
+                if (controller.getSquares()[x][y].getState() == 0) {
+                    //do Nothing
+                } else if (controller.getSquares()[x][y].getState() <= 7) {
+                    g.setColor(COLORS[controller.getSquares()[x][y].getState()]);
                     g.fillRect((int) (x * width / controller.getAmount()), (int) (y * height / controller.getAmount()),
                                (int) (width / controller.getAmount()), (int) (height / controller.getAmount()));
-                } else if (controller.getSquares()[x][y].getState() == 2) {
-                    g.setColor(new Color(255,0,0));
-                    g.fillRect((int) (x * width / controller.getAmount()), (int) (y * height / controller.getAmount()),
-                               (int) (width / controller.getAmount()), (int) (height / controller.getAmount()));
+                } else {
+                    throw new RuntimeException("color not found");
                 }
             }
         }

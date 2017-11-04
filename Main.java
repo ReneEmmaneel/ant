@@ -16,6 +16,8 @@ public class Main {
 
         //Add the rules
         controller.addRule(true);
+        controller.addRule(true);
+        controller.addRule(true);
         controller.addRule(false);
 
         //Make and start the window
