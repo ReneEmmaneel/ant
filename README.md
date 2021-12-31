@@ -1,3 +1,1 @@
-# ant
-Langton's ant simulator
-Will update README when finished
+Small Langton's ant simulator project
